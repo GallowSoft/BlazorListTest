@@ -1,0 +1,43 @@
+@page "/listEditor1"
+
+@layout MainLayout
+
+<PageTitle>List Editor 1</PageTitle>
+
+<h1>List Editor 1</h1>
+
+<div class="row">
+    <div class="col-4">
+        <input type="text" class="form-control" @bind="newItem" />
+        <button class="btn btn-primary" @onclick="AddItem">Add Item</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <ul class="list-group mt-2">
+            @foreach (var item in items)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    @item
+                    <button class="btn btn-danger" @onclick="() => RemoveItem(item)">Remove</button>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<string> items = new List<string> { "Item 1", "Item 2", "Item 3" };
+    private string newItem = string.Empty;
+
+    private void AddItem()
+    {
+        items.Add(newItem);
+        newItem = string.Empty;
+    }
+
+    private void RemoveItem(string item)
+    {
+        items.Remove(item);
+    }
+}
