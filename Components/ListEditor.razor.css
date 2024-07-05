@@ -1,0 +1,10 @@
+.horizontal-layout {
+    display: flex;
+    align-items: center;
+}
+
+.no-wrap-button {
+    white-space: nowrap;
+    min-width: 100px;
+    padding: 10px 15px;
+}

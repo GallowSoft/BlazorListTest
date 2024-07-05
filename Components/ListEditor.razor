@@ -1,0 +1,31 @@
+@using Telerik.Blazor.Components
+@using Telerik.SvgIcons
+@using Telerik.FontIcons
+@namespace ListTest.Components
+
+<h3>List Component</h3>
+<div class="mb-3">
+    <div class="horizontal-layout">
+        <input type="text" class="form-control" @bind="_newItem"/>
+        <TelerikButton icon="@SvgIcon.Plus" class="no-wrap-button">Add Item</TelerikButton>
+        <button class="btn btn-primary no-wrap-button" @onclick="AddItem">Add Item</button>
+    </div>
+</div>
+
+@code {
+
+    private List<string> _items = ["Item 1", "Item 2", "Item 3"];
+    private string _newItem = string.Empty;
+
+    private void AddItem()
+    {
+        _items.Add(_newItem);
+        _newItem = string.Empty;
+    }
+
+    private void RemoveItem(string item)
+    {
+        _items.Remove(item);
+    }
+
+}

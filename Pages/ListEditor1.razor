@@ -1,15 +1,17 @@
 @page "/listEditor1"
+@using ListTest.Components
 
 @layout MainLayout
 
 <PageTitle>List Editor 1</PageTitle>
 
 <h1>List Editor 1</h1>
+<ListEditor/>
 
 <div class="row">
-    <div class="col-4">
-        <input type="text" class="form-control" @bind="newItem" />
-        <button class="btn btn-primary" @onclick="AddItem">Add Item</button>
+    <div class="col-6 d-flex align-items-center">
+        <input type="text" class="form-control flex-grow-1 mr-2" @bind="newItem" />
+        <button class="btn btn-primary flex-shrink-1" @onclick="AddItem">Add Item</button>
     </div>
 </div>
 <div class="row">
