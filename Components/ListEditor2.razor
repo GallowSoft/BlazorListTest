@@ -1,0 +1,50 @@
+@using Telerik.Blazor.Components
+@using Telerik.SvgIcons
+@using Telerik.FontIcons
+@namespace ListTest.Components
+
+<h3>List Component 2</h3>
+<div class="mb-3">
+    <div class="col-4">
+        <ul class="list-group mt-2">
+            @foreach(var item in _items.Select((value, index) => new { value, index }))
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <div class="horizontal-layout">
+                        <TelerikTextBox Value="@item.value" ValueChanged="@(newValue => OnItemChanged(newValue, item.index))" 
+                            class="form-control" />
+                        <TelerikButton Icon="@SvgIcon.PlusCircle" FillMode="clear" OnClick="@AddItemAtLocation"
+                            class="no-wrap-button"></TelerikButton>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
+
+@code {
+
+    private List<string> _items = ["Item 1", "Item 2", "Item 3"];
+    private string _newItem = string.Empty;
+
+    private async Task OnItemChanged(string newValue, int index)
+    {
+        Console.WriteLine($"Item changed: {newValue} at index {index}");
+        _items[index] = newValue;
+        await Task.CompletedTask;
+    }
+
+    private void AddItemAtLocation()
+    {
+        int location = _items.Count;
+         _items.Insert(location, string.Empty);
+    }
+
+    private void RemoveItem(string item)
+    {
+        _items.Remove(item);
+    }
+
+}
+
